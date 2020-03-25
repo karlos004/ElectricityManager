@@ -1,5 +1,6 @@
 package com.emApi.base.security.entity;
 
+import com.emApi.base.abstr.AbstractEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-public class User implements UserDetails {
+public class User extends AbstractEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,22 +29,31 @@ public class User implements UserDetails {
     private final String password;
     @Column(name = "expired_date")
     private final Date expiredDate;
-    @Column(name = "status")
-    private final boolean status;
+    @Column(name = "enabled")
+    private final boolean enabled;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return roles;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
@@ -63,6 +73,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return enabled;
     }
 }

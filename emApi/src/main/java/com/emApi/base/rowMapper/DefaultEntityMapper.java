@@ -58,15 +58,15 @@ public class DefaultEntityMapper<T> implements RowMapper<DefaultEntityMapper.Map
         return new MappedEntityContainer(resultList);
     }
 
-    private static boolean isNull(Object object) {
-        if(object == null) {
+    private static boolean isNull(Object arg) {
+        if(arg == null) {
             return true;
         }
         return false;
     }
 
-    private static boolean notNull(Object object) {
-        if(object == null) {
+    private static boolean notNull(Object arg) {
+        if(arg == null) {
             return false;
         }
         return true;

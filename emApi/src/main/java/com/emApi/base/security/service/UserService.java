@@ -3,11 +3,14 @@ package com.emApi.base.security.service;
 import com.emApi.base.security.dao.UserDAO;
 import com.emApi.base.security.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.security.Principal;
 
 @Service
 public class UserService implements UserDetailsService {
