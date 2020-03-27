@@ -1,7 +1,7 @@
 package com.emApi.base.security.entity;
 
 
-import com.emApi.base.abstr.AbstractEntity;
+import com.emApi.base.entity.AbstractEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;

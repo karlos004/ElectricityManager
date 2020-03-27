@@ -1,6 +1,6 @@
-package com.emApi.base.abstr;
+package com.emApi.base.abstr.basicComponent;
 
-public abstract class BaseAbstract {
+public abstract class BaseAbstractComponent {
 
     public boolean isNull(Object arg) {
         if(arg == null) {

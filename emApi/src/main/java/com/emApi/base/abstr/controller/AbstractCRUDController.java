@@ -1,8 +1,10 @@
-package com.emApi.base.abstr;
+package com.emApi.base.abstr.controller;
+
+import com.emApi.base.abstr.basicComponent.BaseAbstractComponent;
 
 import java.util.List;
 
-public abstract class AbstractEntityService<T> extends BaseAbstract {
+public abstract class AbstractCRUDController<T> extends BaseAbstractComponent {
 
     public abstract void create(T entity);
     public abstract void create(List<T> entities);
