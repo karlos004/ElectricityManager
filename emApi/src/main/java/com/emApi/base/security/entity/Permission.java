@@ -2,19 +2,15 @@ package com.emApi.base.security.entity;
 
 
 import com.emApi.base.entity.AbstractEntity;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.Collection;
 
+
 @Entity
 @Table(name = "permission")
-@Data
-@NoArgsConstructor(force = true)
-@RequiredArgsConstructor
 public class Permission extends AbstractEntity implements GrantedAuthority {
 
     @Id
@@ -31,8 +27,50 @@ public class Permission extends AbstractEntity implements GrantedAuthority {
     @ManyToMany(mappedBy = "permissions")
     private Collection<Role> roles;
 
+    public Permission() {
+    }
+
+    public Permission(Long id, String permissionCd, String description, Collection<Role> roles) {
+        this.permissionCd = permissionCd;
+        this.description = description;
+        this.roles = roles;
+        this.id = id;
+    }
+
     @Override
     public String getAuthority() {
         return permissionCd;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPermissionCd() {
+        return permissionCd;
+    }
+
+    public void setPermissionCd(String permissionCd) {
+        this.permissionCd = permissionCd;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 }

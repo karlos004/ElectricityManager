@@ -1,9 +1,6 @@
 package com.emApi.base.security.entity;
 
 import com.emApi.base.entity.AbstractEntity;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -11,9 +8,6 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "role")
-@Data
-@NoArgsConstructor(force = true)
-@RequiredArgsConstructor
 public class Role extends AbstractEntity implements GrantedAuthority {
 
     @Id
@@ -33,14 +27,63 @@ public class Role extends AbstractEntity implements GrantedAuthority {
     @ManyToMany
     @JoinTable(
             name = "role_permission",
-            joinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "permission_id", referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id"))
     private Collection<Permission> permissions;
+
+    public Role() {
+    }
+
+    public Role(Long id, String roleCd, String description, Collection<User> users, Collection<Permission> permissions) {
+        this.id = id;
+        this.roleCd = roleCd;
+        this.description = description;
+        this.users = users;
+        this.permissions = permissions;
+    }
 
     @Override
     public String getAuthority() {
         return roleCd;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRoleCd() {
+        return roleCd;
+    }
+
+    public void setRoleCd(String roleCd) {
+        this.roleCd = roleCd;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Collection<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Collection<User> users) {
+        this.users = users;
+    }
+
+    public Collection<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Collection<Permission> permissions) {
+        this.permissions = permissions;
     }
 }
