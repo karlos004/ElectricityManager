@@ -30,6 +30,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    // '~/plugins/vue-js-modal.client.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -42,12 +43,17 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    'vue-sweetalert2/nuxt'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api/': 'http://localhost:4433/',
   },
   /*
   ** Build configuration

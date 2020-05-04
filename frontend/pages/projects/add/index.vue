@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="route-history">
-      <span>Projects</span>
+      <nuxt-link to="/projects"><span>Projects</span></nuxt-link>
       <img src="~assets/arrow-right.svg" alt="">
       <span class="active">New project</span>
     </div>
@@ -55,7 +55,7 @@
                 <img src="~assets/edit_active.svg" alt="">
                 <span>Edit</span>
               </div>
-              <div class="remove">
+              <div class="remove" @click="alertDisplay">
                 <img src="~assets/delete.svg" alt="">
                 <span>Remove</span>
               </div>
@@ -71,13 +71,45 @@
 
   export default {
     data () {
-      return { items: [{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}] }
+      return {
+        items: [{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}],
+        deleted: 1,
+        test: 10
+        }
     },
     components: {
+    },
+    methods: {
+      alertDisplay() {
+        this.$swal({
+          title: 'Are you sure?',
+          text: 'You can\'t revert your action',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes Delete it!',
+          cancelButtonText: 'No, Keep it!',
+          showCloseButton: true
+        }).then((result) => {
+          console.log(result)
+          if(result.value) {
+            // this.$swal('Deleted', 'You successfully deleted this file', 'success')
+            this.$swal({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              icon: 'success',
+              title: 'Success',
+            });
+          } else {
+            this.$swal('Cancelled', 'Your file is still intact', 'info')
+          }
+        })
+      }
     }
   }
 </script>
 
-<style lang="sass">
-  @import 'styles/style'
+<style lang="sass" scoped>
+@import './styles/style'
 </style>

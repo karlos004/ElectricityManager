@@ -11,8 +11,10 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
-    "@nuxtjs/axios": "^5.3.6"
+    "vue-notifications": "^1.0.2",
+    "vue-sweetalert2": "^3.0.3"
   },
   "devDependencies": {
     "node-sass": "^4.13.1",

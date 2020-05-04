@@ -55,10 +55,12 @@
         </ul>
       </div>
       <div class="button-add-wrapper">
+        <nuxt-link to="/projects/add">
         <div class="button">
           <img src="~assets/add.svg" alt="">
           <span>Add</span>
         </div>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -68,13 +70,13 @@
 
 export default {
   data () {
-    return { items: [{id:1},{id:2},{id:2},{id:2},{id:2},{id:2}] }
+    return { items: [{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}] }
   },
   components: {
   }
 }
 </script>
 
-<style lang="sass">
-@import 'styles/style'
+<style lang="sass" scoped>
+@import './styles/style'
 </style>
