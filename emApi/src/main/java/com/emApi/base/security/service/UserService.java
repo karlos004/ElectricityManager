@@ -55,6 +55,7 @@ public class UserService extends AbstractEntityService<User> implements UserDeta
     }
 
     @Override
+    @Transactional
     public void delete(List<Long> ids) {
         ids.forEach(id -> userDAO.deleteById(id));
     }
@@ -66,6 +67,7 @@ public class UserService extends AbstractEntityService<User> implements UserDeta
     }
 
     @Override
+    @Transactional
     public void saveOrUpdate(List<User> entities) {
         entities.forEach(entity -> userDAO.saveOrUpdate(entity));
     }
