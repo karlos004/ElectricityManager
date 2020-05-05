@@ -10,8 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class testController {
 
     @GetMapping("")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasPermission('essa', 'READ')")
     public String findAll() {
-        return "Działa essa :)";
+        return "Działa essa ヽ༼ ຈل͜ຈ༼ ▀̿̿Ĺ̯̿̿▀̿ ̿༽Ɵ͆ل͜Ɵ͆ ༽ﾉ";
+    }
+
+    @GetMapping("/test1")
+    @PreAuthorize("hasPermission('essa', 'DELETE')")
+    public String test() {
+        return "Działa essa fchuj (˵ ͡° ͜ʖ ͡°˵)";
+    }
+
+    @GetMapping("/test2")
+    @PreAuthorize("hasPermission('essa', 'KUPA')")
+    public String test2() {
+        return "nie powinno sie pokazac ⤜(ⱺ ʖ̯ⱺ)⤏";
     }
 }

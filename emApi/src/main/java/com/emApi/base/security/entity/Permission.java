@@ -73,4 +73,14 @@ public class Permission extends AbstractEntity implements GrantedAuthority {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+    @Override
+    public String toString() {
+        return "Permission{" +
+                "id=" + id +
+                ", permissionCd='" + permissionCd + '\'' +
+                ", description='" + description + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 }

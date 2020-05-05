@@ -42,17 +42,17 @@ public class DefaultEntityMapper<T> implements RowMapper<DefaultEntityMapper.Map
                 }
             }
 
-            try {
-                resultList.add(tClass.getConstructor(tFieldsTypes.toArray(Class[]::new)).newInstance(args.toArray()));
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                resultList.add(tClass.getConstructor(tFieldsTypes.toArray(Class[]::new)).newInstance(args.toArray()));
+//            } catch (InstantiationException e) {
+//                e.printStackTrace();
+//            } catch (IllegalAccessException e) {
+//                e.printStackTrace();
+//            } catch (InvocationTargetException e) {
+//                e.printStackTrace();
+//            } catch (NoSuchMethodException e) {
+//                e.printStackTrace();
+//            }
         } while (rs.next());
 
         return new MappedEntityContainer(resultList);

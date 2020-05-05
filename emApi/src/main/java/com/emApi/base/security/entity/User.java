@@ -26,7 +26,7 @@ public class User extends AbstractEntity implements UserDetails {
     @Column(name = "enabled")
     private boolean enabled;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns =  @JoinColumn(name = "user_id") ,
@@ -35,6 +35,7 @@ public class User extends AbstractEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         return roles;
     }
 
@@ -116,4 +117,15 @@ public class User extends AbstractEntity implements UserDetails {
         this.roles = roles;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", expiredDate=" + expiredDate +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                '}';
+    }
 }

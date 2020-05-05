@@ -24,11 +24,11 @@ public class Role extends AbstractEntity implements GrantedAuthority {
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "role_permission",
             joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "permission_id"))
+            inverseJoinColumns = @JoinColumn(name = "perm_id"))
     private Collection<Permission> permissions;
 
     public Role() {
@@ -85,5 +85,16 @@ public class Role extends AbstractEntity implements GrantedAuthority {
 
     public void setPermissions(Collection<Permission> permissions) {
         this.permissions = permissions;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleCd='" + roleCd + '\'' +
+                ", description='" + description + '\'' +
+                ", users=" + users +
+                ", permissions=" + permissions +
+                '}';
     }
 }

@@ -1,6 +1,8 @@
 package com.emApi.base.security.dao;
 
 import com.emApi.base.abstr.dao.AbstractDAO;
+import com.emApi.base.security.entity.Permission;
+import com.emApi.base.security.entity.Role;
 import com.emApi.base.security.entity.User;
 import org.hibernate.Hibernate;
 import org.hibernate.query.Query;
@@ -22,7 +24,6 @@ public class UserDAO extends AbstractDAO<User> {
         Query<User> query = getSession().createQuery("from User where username = :username", User.class);
         query.setParameter("username", userName);
         User result =  query.getSingleResult();
-        Hibernate.initialize(result.getAuthorities());
         return result;
     }
 
