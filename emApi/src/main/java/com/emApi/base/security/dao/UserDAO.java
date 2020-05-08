@@ -1,9 +1,8 @@
 package com.emApi.base.security.dao;
 
 import com.emApi.base.abstr.dao.AbstractDAO;
-import com.emApi.base.security.entity.Role;
 import com.emApi.base.security.entity.User;
-import com.emApi.base.rowMapper.DefaultEntityMapper;
+import org.hibernate.Hibernate;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,9 +19,11 @@ public class UserDAO extends AbstractDAO<User> {
     }
 
     public User findByUsername(String userName) {
-        Query<User> query = getSession().createQuery("from User where userName = :userName", User.class);
-        query.setParameter("userName", userName);
-        return query.getSingleResult();
+        Query<User> query = getSession().createQuery("from User where username = :username", User.class);
+        query.setParameter("username", userName);
+        User result =  query.getSingleResult();
+        Hibernate.initialize(result.getAuthorities());
+        return result;
     }
 
     @Override
