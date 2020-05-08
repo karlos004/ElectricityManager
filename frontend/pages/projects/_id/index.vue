@@ -21,9 +21,9 @@
       </div>
     </div>
     <div class="route-history">
-      <span>
-        Projects
-      </span>
+      <nuxt-link to="/projects"><span>Projects</span></nuxt-link>
+      <img src="~assets/arrow-right.svg" alt="">
+      <span class="active">Project 1</span>
     </div>
     <div class="search-wrapper">
       <h1 class="search-title">Search</h1>
@@ -33,22 +33,20 @@
       </div>
     </div>
     <div class="projects-wrapper">
-      <h1>Your projects</h1>
+      <h1>Project {{ this.$route.params.id }} measurments</h1>
       <div class="list-wrapper">
         <ul class="list">
-          <li class="element" v-for="item in items" :key="item.id">
-            <nuxt-link :to="{ path: `projects/${item.id}` }">
-              <div class="project-data">
-                <span class="id">{{ item.id }}</span>
-                <span class="name">Project 1</span>
-              </div>
-            </nuxt-link>
+          <li class="element" v-for="item in items" v-bind:key="item.id">
+            <div class="project-data">
+              <span class="id">1</span>
+              <span class="name">Measurment 1</span>
+            </div>
             <div class="buttons">
               <div class="edit">
                 <img src="~assets/edit_active.svg" alt="">
                 <span>Edit</span>
               </div>
-              <div class="remove" @click="deleteItem(item.id)">
+              <div class="remove">
                 <img src="~assets/delete.svg" alt="">
                 <span>Remove</span>
               </div>
@@ -73,12 +71,6 @@
 export default {
   data () {
     return { items: [{id:1},{id:2},{id:3},{id:4},{id:5},{id:6}] }
-  },
-  methods: {
-    deleteItem: function(id) {
-      this.items = this.items.filter((e)=>e.id !== id )
-      //console.log(id);
-    }
   },
   components: {
   }

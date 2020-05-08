@@ -61,54 +61,43 @@
 			font-weight: 700
 		img
 			margin: 0 15px
-	.add-wrapper
+	.search-wrapper
 		margin-top: 20px
-		.add-title
-			display: flex
-			margin-bottom: 40px
-			h1
+		.search-title
+			font-size: 24px
+			font-weight: 400
+			margin-bottom: 10px
+		.search-inputs
+			input
+				margin-right: 20px
+				padding: 0 20px
+				width: 603px
+				height: 44px
+				border-radius: 6px
+				border: solid #e9edf3
+				background: #ffffff
+				color: #477ba1
+				font-family: Lato
+				font-size: 15px
+				font-weight: 400
+				&::placeholder
+					color: grey
+			button
+				cursor: pointer
+				font-family: Lato
+				font-size: 15px
 				font-weight: 700
-				font-size: 37px
-			img
-				margin-right: 35px
-				width: 36px
-				height: 33px
-		.add-inputs-wrapper
-			padding-left: 20px
-			.add-inputs
-				margin-top: 10px
-				display: flex
-				input
-					margin-right: 20px
-					padding: 0 20px
-					width: 603px
-					height: 44px
-					border-radius: 6px
-					border: solid #e9edf3
-					background: #ffffff
-					color: #477ba1
-					font-family: Lato
-					font-size: 15px
-					font-weight: 400
-					&::placeholder
-						color: grey
-				.button
-					user-select: none
-					cursor: pointer
-					display: flex
-					align-items: center
-					width: 140px
-					height: 40px
-					border-radius: 6px
-					background: linear-gradient(135deg, #6ED74D, #00D015)
-					img
-						margin-left: 20px
-					span
-						color: white
-						margin-left: 20px
+				text-align: center
+				color: white
+				border: none
+				width: 168px
+				height: 44px
+				border-radius: 6px
+				background: linear-gradient(135deg, #3FABFF, #006BFF)
 	.projects-wrapper
-		margin-top: 50px
+		margin-top: 25px
 		position: relative
+		padding-bottom: 70px
 		h1
 			margin-bottom: 25px
 			font-size: 27px
@@ -145,3 +134,23 @@
 							align-items: center
 							span
 								margin-left: 20px
+		.button-add-wrapper
+			position: absolute
+			bottom: 0
+			right: 0
+			a
+				text-decoration: none
+			.button
+				user-select: none
+				cursor: pointer
+				display: flex
+				align-items: center
+				width: 140px
+				height: 40px
+				border-radius: 6px
+				background: linear-gradient(135deg, #6ED74D, #00D015)
+				img
+					margin-left: 20px
+				span
+					color: white
+					margin-left: 20px
